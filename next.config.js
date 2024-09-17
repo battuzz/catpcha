@@ -3,7 +3,8 @@ const nextConfig = {
     experimental: {
         missingSuspenseWithCSRBailout: false,
     },
-    output: 'export'
+    output: 'export',
+    basePath: '/catpcha',
 }
 
 module.exports = nextConfig
