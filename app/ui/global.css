@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  background-color: #002953;
+}
+
+.nyancat-image {
+  height: 65vh;
+  margin: 0 auto;
+}
+
+.image-overlay {
+  position: relative;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: large;
+}
+
+.play-button {
+  padding: 1rem 2rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.play-button a {
+  text-decoration: none;
+  color: white;
+}
