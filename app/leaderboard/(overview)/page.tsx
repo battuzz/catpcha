@@ -81,7 +81,7 @@ const Leaderboard = () => {
                 </Table>
             </TableContainer>
 
-            <Link href='/play'>
+            <Link href='/catpcha/play'>
                 <Button variant='contained' className='mt-5 p-4'>Gioca ancora</Button>
             </Link>
         </>
