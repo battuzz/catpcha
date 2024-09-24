@@ -4,7 +4,7 @@ const nextConfig = {
         missingSuspenseWithCSRBailout: false,
     },
     output: 'export',
-    // basePath: '/catpcha',
+    basePath: '/catpcha',
 }
 
 module.exports = nextConfig
