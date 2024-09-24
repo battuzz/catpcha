@@ -4,9 +4,18 @@ import { useEffect, useState } from 'react'
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper, Link } from '@mui/material'
 import { Button, Grid, Box } from '@mui/material'
 import { useSearchParams } from 'next/navigation'
+import { collection, getDocs } from "firebase/firestore"
+import { db, fetchLeaderboard } from '@/app/lib/database'
+
+type ScoreRecord = {
+    name: string;
+    baseline?: boolean;
+    score: number;
+    label?: string
+};
 
 const Leaderboard = () => {
-    const baselines = [
+    const baselines: ScoreRecord[] = [
         {
             name: 'Random agent 😎',
             baseline: true,
@@ -34,15 +43,27 @@ const Leaderboard = () => {
 
     const username = searchParams.get('username')
 
+
     useEffect(() => {
-        var entries = JSON.parse(localStorage.getItem('LEADERBOARD') ?? "[]")
-        if (entries === null) {
-            entries = []
-        }
-        let all_entries = entries.concat(baselines)
-        all_entries.sort((a: any, b: any) => a.score < b.score ? 1 : -1)
-        setLeaderboard(all_entries)
+        fetchLeaderboard()
+            .then(remote_entries => {
+                let entries: ScoreRecord[] = remote_entries.map(e => ({ score: e.score, name: e.name }))
+                let all_entries = entries.concat(baselines)
+                all_entries.sort((a, b) => a.score < b.score ? 1 : -1)
+                setLeaderboard(all_entries)
+            }).catch(console.error);
     }, [])
+
+
+    // useEffect(() => {
+    //     var entries = JSON.parse(localStorage.getItem('LEADERBOARD') ?? "[]")
+    //     if (entries === null) {
+    //         entries = []
+    //     }
+    //     let all_entries = entries.concat(baselines)
+    //     all_entries.sort((a: any, b: any) => a.score < b.score ? 1 : -1)
+    //     setLeaderboard(all_entries)
+    // }, [])
 
     return (
         <>

@@ -27,7 +27,7 @@ export default function SideBar() {
     const pathname = usePathname();
 
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col px-2 md:px-0'>
             <div className="flex h-full md:flex-col px-3 py-4 md:px-2">
                 <Link
                     className="mb-2 flex items-end justify-start rounded-md p-4"

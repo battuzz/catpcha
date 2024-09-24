@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="w-full flex-none md:w-64">
             <SideBar />
           </div>
-          <div className="flex-grow px-6 md:overflow-y-auto md:px-12">{children}</div>
+          <div className="flex-grow px-2 md:px-6 md:overflow-y-auto md:px-12">{children}</div>
         </div>
       </body>
     </html>

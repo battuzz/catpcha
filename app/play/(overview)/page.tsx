@@ -9,6 +9,7 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import { useEffect, useState } from "react";
 
 import cat_images from "../../image_database.json"
+import { updateLeaderboard } from "@/app/lib/database";
 
 
 const MAX_ROUNDS = 3;
@@ -75,7 +76,7 @@ export default function CatPlay() {
         if (gameState.isSelecting) {
             return selectedImages.has(index)
                 ? 'border-4 border-yellow-500'
-                : 'p-[4px]'
+                : 'p-[2px] md:p-[4px]'
         }
         else {
             return isCorrectSelection(index)
@@ -114,6 +115,8 @@ export default function CatPlay() {
                 }]
             ))
 
+            updateLeaderboard(name, totalScore).catch(console.error);
+
             // const updateLeaderboard = async (name, score) => {
             //     const docRef = await addDoc(collection(db, "leaderboard"), {
             //         name: name,
@@ -149,8 +152,8 @@ export default function CatPlay() {
                 </List>
 
                 <div className="h-fit">
-                    <h1 className="max-h-[5vh] text-2xl"> <b>Seleziona le immagini generate da una IA</b></h1>
-                    <div className="grid grid-cols-3  gap-[5px] h-full max-h-[85vh] aspect-square">
+                    <h1 className="max-h-[5vh] text-2xl"> <b>Seleziona i gatti generati da una IA!</b></h1>
+                    <div className="grid grid-cols-3  md:gap-[5px] h-full max-h-[85vh] aspect-square">
                         {gameState.imgLinks.map((img, index) =>
                         (
                             <div key={'div-' + index} className="hover:scale-[1.05] hover:cursor-pointer relative">
