@@ -151,7 +151,7 @@ export default function CatPlay() {
                     </ListItem>
                 </List>
 
-                <div className="h-fit">
+                <div className="h-fit" style={{ margin: "0 auto" }}>
                     <h1 className="max-h-[5vh] text-2xl"> <b>Seleziona i gatti generati da una IA!</b></h1>
                     <div className="grid grid-cols-3  md:gap-[5px] h-full max-h-[85vh] aspect-square">
                         {gameState.imgLinks.map((img, index) =>

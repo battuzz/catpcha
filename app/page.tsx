@@ -20,13 +20,13 @@ export default function HomePage() {
 
   return (
     <div>
-      <img className="nyancat-image" src="images/nyancat.svg"></img>
+      <img className="nyancat-image" src="images/nyancat.svg" style={{ margin: "0 auto" }}></img>
 
       <div className="image-overlay">
 
         {
           askForUsername ? <UsernameForm />
-            : <Button variant="contained" className="play-button" onClick={onPlayButtonClicked}>
+            : <Button variant="contained" style={{ padding: "1rem 2rem", display: "block", margin: "0 auto" }} onClick={onPlayButtonClicked}>
               Play
             </Button>
         }
