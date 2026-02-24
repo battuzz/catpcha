@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation"
 import ImageIcon from "@mui/icons-material/Image"
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import cat_images from "../../image_database.json"
 import { updateLeaderboard } from "@/app/lib/database";
@@ -14,7 +14,7 @@ import { updateLeaderboard } from "@/app/lib/database";
 
 const MAX_ROUNDS = 3;
 
-export default function CatPlay() {
+const CatPlayInner = () => {
     const searchParams = useSearchParams();
     const [selectedImages, setSelectedImages] = useState(new Set())
     const [gameState, setGameState] = useState({
@@ -190,3 +190,10 @@ export default function CatPlay() {
     )
 }
 
+const CatPlay = () => {
+    return <Suspense fallback={<div>Loading...</div>}>
+        <CatPlayInner />
+    </Suspense>
+}
+
+export default CatPlay
