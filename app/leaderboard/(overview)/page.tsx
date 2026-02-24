@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper, Link } from '@mui/material'
 import { Button, Grid, Box } from '@mui/material'
 import { useSearchParams } from 'next/navigation'
@@ -14,7 +14,7 @@ type ScoreRecord = {
     label?: string
 };
 
-const Leaderboard = () => {
+const LeaderboardInner = () => {
     const baselines: ScoreRecord[] = [
         {
             name: 'Random agent 😎',
@@ -107,6 +107,12 @@ const Leaderboard = () => {
             </Link>
         </>
     )
+}
+
+const Leaderboard = () => {
+    return <Suspense fallback={<div>Loading...</div>}>
+        <LeaderboardInner />
+    </Suspense>
 }
 
 export default Leaderboard
